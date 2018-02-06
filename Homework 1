@@ -1,0 +1,35 @@
+//Alan Hancher
+//AJH0067
+//hw1.cpp
+//To compile my code, I will need to upload it to linux using a ssh file convertor.
+//Next, I will compile it on a tux machine using the "g++ hw1.cpp" command
+//stackoverflow.com for help on my expression must have integral or unscoped enum type
+/*Figure out my error using stackover flow, in my formula for soda, I was trying to concatanate the string 
+  when I needed to be using "<<" instead. */
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	double dieterWeight;
+	double mouseWeight;
+	double artificialSweetner;
+	const double fraction = 0.001;
+
+	cout << "What is the amount of artificial sweetner needed to kill a mouse: ";
+	cin >> artificialSweetner;
+
+	cout << "What is the weight of the mouse: ";
+	cin >> mouseWeight;
+
+	cout << "What is the weight of the dieter: ";
+	cin >> dieterWeight;
+
+	double soda = artificialSweetner / fraction * dieterWeight / mouseWeight;
+
+	cout << "You can drink " << soda << " diet soda without dying as a result";
+
+
+	return 0;
+}
