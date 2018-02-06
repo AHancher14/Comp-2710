@@ -1,0 +1,89 @@
+//AJH0067
+//hw2.cpp
+/* To Compile my code, I will first need to transfer my file over
+using winSCP. Next I will have to compile firs by using the "ls"
+command, next I will use the following command, g++ -o hw2 hew.cpp */
+
+#include<iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+
+	double interestRate;
+	double monthlyPayment;
+	double loan;
+	cout.setf(ios::fixed);
+	cout.setf(ios::showpoint);
+	cout.precision(2);
+
+	cout << "Loan Amount: ";
+	cin >> loan;
+
+	cout << "Interest Rate (% per year): ";
+	cin >> interestRate;
+
+	cout << "Monthly Payments: ";
+	cin >> monthlyPayment;
+
+
+	//First step is to find the monthly rate which is the interest rate divided by 12
+	//Next step is to set the increment counter which is months.
+	//While monthlyPayment is less then loan amount, it is going do the code inside
+
+	double rate = (interestRate / 12) / 100;
+	int month = 0;
+	double form1; // this is the interest
+	double principal;
+	double printedRate = interestRate / 12;
+	form1 = (rate * loan);
+	std::cout << std::fixed;
+
+
+	if (monthlyPayment < form1) {
+		cout << "Your interest is greater than your monthlyPayments";
+		return 0;
+	}
+	cout << "******************************************************" << endl;
+	cout << "	Amoritization Table                                " << endl;
+	cout << "******************************************************" << endl;
+	cout << "Month\tBalance\t\tPayment\tRate\tInterest\tPrincipal" << endl;
+	cout << month << "\t$" << loan << "\tN/A \tN/A \tN/A \t\tN/A" << endl;
+
+	double total = 0;
+	double balance = loan;
+	if (monthlyPayment <= loan) {
+		while (monthlyPayment <= balance) {
+			double interest = balance * rate;
+			principal = monthlyPayment - interest;
+			balance = balance - principal;
+			total += interest;
+			month++;
+			cout << month;
+			cout << "\t$" << balance;
+			cout << " \t\t$" << monthlyPayment;
+			cout << "\t" << printedRate;
+			cout << "\t$" << interest;
+			cout << "\t\t$" << principal << endl;
+			
+		}
+	}
+		
+		double interest = balance * rate;
+		monthlyPayment = balance + interest;
+		principal = monthlyPayment - interest;
+		balance = 0;
+		month = month + 1;
+		total += interest;
+		cout << month;
+		cout << "$" << balance;
+		cout <<  "$"<< monthlyPayment;
+		cout << "\t" << printedRate;
+		cout << "\t$" << interest; 
+		cout << "\t\t$" << principal << endl;
+		cout << "******************************************************";
+		cout << "\nIt takes " << month << " months to pay of the loan." << endl;
+		cout << "Total interest paid is: $" << total << endl;
+	return 0;
+	}
